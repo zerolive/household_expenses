@@ -3,10 +3,12 @@ services:
   hoex:
     container_name: hoex
     build: .
+    ports:
+      - 9292:9292
     volumes:
      - .:/household_expenses
 
-    command: bash -c "bundle install --jobs 3"
+    command: bash -c "bundle install --jobs 3 && rackup"
 
 volumes:
   bundle:
