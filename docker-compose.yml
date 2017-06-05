@@ -1,13 +1,7 @@
 version: '2'
 services:
   hoex:
-    container_name: hoex
     build: .
-    volumes:
-     - .:/household_expenses
-
-    command: bash -c "bundle install --jobs 3"
-
-volumes:
-  bundle:
-    driver: local
+    ports:
+      - '6001:6001'
+    command: bundle exec rake up

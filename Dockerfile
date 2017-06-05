@@ -6,3 +6,4 @@ WORKDIR /household_expenses
 
 RUN apt-get update
 RUN gem install bundler
+RUN bundle install
