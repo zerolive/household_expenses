@@ -1,5 +1,5 @@
 class HouseholdExpenses
   def call(env)
-    'Hello World'
+    [200, {}, ['Hello World']]
   end
 end
