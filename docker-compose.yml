@@ -1,0 +1,7 @@
+version: '2'
+services:
+  hoex:
+    build: .
+    ports:
+      - '6001:6001'
+    command: bundle exec rake up

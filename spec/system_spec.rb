@@ -1,12 +1,12 @@
-require 'net/http'
+require_relative '../household_expenses'
+require 'rack/test'
 
 describe 'Application' do
+  include Rack::Test::Methods
+
   it 'is up' do
-    url = 'http://127.0.0.1:6001'
-    uri = URI(url)
+    get '/'
 
-    code = Net::HTTP.get_response(uri).code
-
-    expect(code).to eq('200')
+    expect(last_response.ok?).to eq(true)
   end
 end

@@ -23,7 +23,7 @@ bundle exec rake up
 ```
 
 # Run test
-Actually for run the test you need run the application with the previous command and run the next command:
+For run the test you need to run the next command:
 
 ```
 bundle exec rake
