@@ -1,6 +1,6 @@
 require 'net/http'
 
-describe 'Application' do
+describe 'Application', :no_ci do
   it 'is up' do
     url = 'http://localhost:6001'
     uri = URI(url)
