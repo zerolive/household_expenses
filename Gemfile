@@ -7,4 +7,5 @@ gem 'rake', '~> 12.0.0'
 group :test do
   gem 'rack-test', '~> 0.6.3'
   gem 'rspec', '~> 3.6.0'
+  gem 'capybara', '~> 2.14.3'
 end
