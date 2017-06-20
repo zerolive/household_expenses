@@ -1,7 +1,15 @@
 # Household expenses
 Is a web application for manage your shared household expenses with your mates.
 
-#Installation
+## Github repository
+
+You can find the source code of this application in:
+
+```
+https://github.com/zerolive/household_expenses
+```
+
+## Installation
 You need install Ruby 2.4.0
 After you have to install bundle gem with:
 
@@ -15,7 +23,7 @@ At the end run the next command:
 bundle install
 ```
 
-# Run app
+## Run app
 For run the application you have to run the next command:
 
 In local machine:
@@ -36,7 +44,7 @@ You can access to the application openning in your browser:
 http://localhost:6001
 ```
 
-# Run test
+## Run test
 For run the tests you have start the application and after that you have to run the next commands:
 
 In local machine:
@@ -51,6 +59,10 @@ With docker:
 docker-compose exec hoex bundle exec rake
 ```
 
-# CI and autodeploy in demo-environment
+## CI and autodeploy in demo-environment
 
-When you push a commit, Travis CI run the tests, when it pass all the test, Heroku auto deploy the new commit to demo environment.
+When you push a commit, Travis CI run the tests, when it pass all the test, Heroku auto deploy the new commit to demo environment, you can find it in:
+
+```
+https://hoex-demo.herokuapp.com/
+```
