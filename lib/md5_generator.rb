@@ -1,12 +1,13 @@
-
 class MD5Generator
-  def self.encode(word)
-    encode_to_md5(word)
-  end
+  class << self
+    def encode(word)
+      encode_to_md5(word)
+    end
 
-  private
+    private
 
-  def self.encode_to_md5(word)
-    Digest::MD5.hexdigest(word)
+    def encode_to_md5(word)
+      Digest::MD5.hexdigest(word)
+    end
   end
 end

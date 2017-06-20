@@ -1,9 +1,10 @@
+require_relative '../../lib/md5_generator'
 
 class LoginService
   USERS = [
     {
       'email' => 'kirito@hoex.com',
-      'password' => 'dual_sword'
+      'password' => 'df6b10c1fd1a4d88d1173a06e8f5b23b'
     }
   ]
 
@@ -13,7 +14,7 @@ class LoginService
   def initialize(email, password)
     @user = {
       'email' => email,
-      'password' => password
+      'password' => encode(password)
     }
   end
 
@@ -30,6 +31,10 @@ class LoginService
       user['email'] == @user['email'] &&
       user['password'] == @user['password']
     end
+  end
+
+  def encode(password)
+    MD5Generator.encode(password)
   end
 
   def fail_message
