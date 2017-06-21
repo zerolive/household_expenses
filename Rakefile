@@ -1,7 +1,8 @@
 task default: %w[test]
 
 task :test do
-  sh "rspec"
+  sh "rspec --tag system"
+  sh "rspec --tag ~system"
 end
 
 task :ci do
