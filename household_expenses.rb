@@ -7,7 +7,7 @@ class HouseholdExpenses
     params = Rack::Utils.parse_nested_query(env['QUERY_STRING'])
     return [200, {}, [readme_to_s]] if path == '/'
     return [200, {}, [login_page]] if path == '/login'
-    return [200, {}, [home_page(params)]] if path == '/validate_login'
+    return [200, {}, [home_page(params)]] if path == '/home'
     return [404, {}, ['page not found']]
   end
 
