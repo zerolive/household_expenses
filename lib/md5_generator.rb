@@ -9,7 +9,7 @@ class MD5Generator
     private
 
     def encode_to_md5(word)
-      Digest::MD5.hexdigest(word)
+      Digest::MD5.hexdigest(word || '')
     end
   end
 end
