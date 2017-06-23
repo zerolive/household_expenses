@@ -5,6 +5,10 @@ class LoginService
     {
       'email' => 'kirito@hoex.com',
       'password' => 'df6b10c1fd1a4d88d1173a06e8f5b23b'
+    },
+    {
+      'email' => 'asuna@hoex.com',
+      'password' => '8538f965f69793ecce96c7441a9a4798'
     }
   ]
 
