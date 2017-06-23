@@ -1,3 +1,5 @@
+require 'digest'
+
 class MD5Generator
   class << self
     def encode(word)
