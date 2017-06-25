@@ -1,14 +1,19 @@
 require_relative 'services/login/service'
-require 'ostruct'
+require_relative 'lib/view'
 
 class HouseholdExpenses
   def call(env)
     path = env['PATH_INFO']
     params = Rack::Utils.parse_nested_query(env['QUERY_STRING'])
-    return [200, {}, [readme_to_s]] if match?(path, '/')
-    return [200, {}, [login_page]] if match?(path, '/login')
-    return [200, {}, [home_page(params)]] if match?(path, '/home')
-    return [404, {}, ['page not found']]
+
+    response = {
+      '/' => readme_to_s,
+      '/login' => login_page,
+      '/home' => home_page(params)
+    }
+
+    return page_not_found if response[path].nil?
+    response[path]
   end
 
   private
@@ -16,18 +21,12 @@ class HouseholdExpenses
   def home_page(params)
     return login_page if conclusive?(params)
 
-    path = 'app/views/home.html.erb'
-    path_erb_file = File.expand_path(path)
-    file = File.read(path_erb_file)
-    variables = OpenStruct.new('email' => params['email'])
-    ERB.new(file).result(variables.instance_eval { binding })
+    email = { 'email' => params['email'] }
+    [200, {}, [View.new('app/views/home.html.erb').render(email)]]
   end
 
   def login_page
-    path = 'app/views/login.html'
-    path_erb_file = File.expand_path(path)
-    file = File.read(path_erb_file)
-    ERB.new(file).result
+    [200, {}, [View.new('app/views/login.html').render]]
   end
 
   def conclusive?(data)
@@ -35,12 +34,12 @@ class HouseholdExpenses
     conclusion['message'] == 'fail'
   end
 
-  def match?(path, route)
-    path == route || path == (route + '/')
+  def page_not_found
+    [404, {}, ['Page not found']]
   end
 
   def readme_to_s
     file = File.open("README.md", "rb")
-    file.read
+    [200, {}, [file.read]]
   end
 end
