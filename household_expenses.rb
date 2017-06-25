@@ -1,5 +1,5 @@
 require_relative 'services/login/service'
-require_relative 'lib/view'
+require_relative 'lib/action'
 
 class HouseholdExpenses
   def call(env)
@@ -19,19 +19,19 @@ class HouseholdExpenses
   private
 
   def home_page(params)
-    return login_page if conclusive?(params)
+    return login_page unless conclusive?(params)
 
     email = { 'email' => params['email'] }
-    [200, {}, [View.new('app/views/home.html.erb').render(email)]]
+    Action.new('app/views/home.html.erb').do(params)
   end
 
   def login_page
-    [200, {}, [View.new('app/views/login.html').render]]
+    Action.new('app/views/login.html').do
   end
 
   def conclusive?(data)
     conclusion = LoginService.new(data['email'], data['password']).conclude
-    conclusion['message'] == 'fail'
+    conclusion['message'] == 'success'
   end
 
   def page_not_found
